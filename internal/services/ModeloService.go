@@ -37,7 +37,7 @@ func (s *ModeloService) Criar(dto *dto.CriarModeloDTO) error {
 	}
 
 	for _, r := range dto.Regras {
-		m.Regras = append(m.Regras, models.RegraComponente{
+		m.Regras = append(m.Regras, models.RegraModelo{
 			Nome:        r.Nome,
 			LarguraExpr: r.LarguraExpr,
 			AlturaExpr:  r.AlturaExpr,
@@ -66,7 +66,7 @@ func (s *ModeloService) Atualizar(id uint, dto *dto.CriarModeloDTO) (*models.Mod
 	m.Descricao = dto.Descricao
 
 	for _, r := range dto.Regras {
-		m.Regras = append(m.Regras, models.RegraComponente{
+		m.Regras = append(m.Regras, models.RegraModelo{
 			Nome:        r.Nome,
 			LarguraExpr: r.LarguraExpr,
 			AlturaExpr:  r.AlturaExpr,

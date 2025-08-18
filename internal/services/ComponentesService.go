@@ -14,7 +14,7 @@ func Componente(repo *repositories.ComponenteRepository) *ComponenteService {
 	return &ComponenteService{Repo: repo}
 }
 
-func GerarComponentes(item models.ItemMontado, modelo models.ModeloMovel) []models.Componente {
+func GerarComponentes(item models.ItemMontado, modelo models.ModeloMovel, placas map[string]models.PlacaMDF) []models.Componente {
 	var componentes []models.Componente
 
 	vars := map[string]interface{}{
@@ -28,6 +28,11 @@ func GerarComponentes(item models.ItemMontado, modelo models.ModeloMovel) []mode
 		largura := utils.AvaliarExpressao(regra.LarguraExpr, vars)
 		altura := utils.AvaliarExpressao(regra.AlturaExpr, vars)
 
+		placa, ok := placas[regra.MaterialKey]
+		if !ok {
+			continue // ou usar uma placa padrão
+		}
+
 		componentes = append(componentes, models.Componente{
 			Nome:          regra.Nome,
 			Altura:        altura,
@@ -37,6 +42,7 @@ func GerarComponentes(item models.ItemMontado, modelo models.ModeloMovel) []mode
 			Profundidade:  item.Profundidade,
 			Espessura:     item.Espessura,
 			ItemMontadoID: item.Id,
+			PlacaMDFID:    placa.ID,
 		})
 	}
 
