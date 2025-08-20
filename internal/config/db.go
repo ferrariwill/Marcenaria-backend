@@ -34,14 +34,16 @@ func InitDB() {
 	}
 
 	err = db.AutoMigrate(
+		&models.Cliente{},
 		&models.Componente{},
 		&models.Ferragem{},
 		&models.Filete{},
-		&models.RegraComponente{},
 		&models.ItemMontado{},
 		&models.ModeloMovel{},
+		&models.Orcamento{},
 		&models.PlacaMDF{},
 		&models.Projeto{},
+		&models.RegraModelo{},
 	)
 
 	if err != nil {

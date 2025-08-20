@@ -101,6 +101,7 @@ func (s *OrcamentoService) Calcular(dto dto.OrcamentoDTO) (*models.Orcamento, er
 		MargemLucro:    dto.MargemLucro,
 		PrecoFinal:     precoFinal,
 		DataCriacao:    time.Now(),
+		ClienteID:      dto.ClienteID,
 	}
 
 	return &orcamento, nil

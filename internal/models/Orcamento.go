@@ -5,7 +5,9 @@ import (
 )
 
 type Orcamento struct {
-	Id             uint         `json:"id" gorm:"primaryKey"`
+	Id             uint `json:"id" gorm:"primaryKey"`
+	ClienteID      uint
+	Cliente        Cliente      `gorm:"foreignKey:ClienteID"`
 	Descricao      string       `json:"descricao"`
 	Componentes    []Componente `json:"componentes" gorm:"foreignKey:OrcamentoID"`
 	CustoMateriais float64      `json:"custo_materiais"`

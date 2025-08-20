@@ -12,4 +12,5 @@ type OrcamentoDTO struct {
 	CustoExtras  float64
 	MargemLucro  float64
 	Descricao    string
+	ClienteID    uint
 }
